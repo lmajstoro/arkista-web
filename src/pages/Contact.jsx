@@ -1,6 +1,42 @@
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    questionType: '',
+    message: '',
+  });
+  const [uploadedImages, setUploadedImages] = useState([]);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleImageUpload = (e) => {
+    const files = Array.from(e.target.files);
+    setUploadedImages(prev => [...prev, ...files]);
+  };
+
+  const removeImage = (index) => {
+    setUploadedImages(prev => prev.filter((_, i) => i !== index));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Backend logika će biti dodana kasnije
+    console.log('Form data:', formData);
+    console.log('Uploaded images:', uploadedImages);
+    alert('Poruka je poslana! (Backend još nije implementiran)');
+  };
+
+  const isWorkRequest = formData.questionType === 'zahtjev-za-radom';
+
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 py-8 sm:py-12 md:py-16 transition-colors duration-200">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -17,6 +53,201 @@ const Contact = () => {
           <p className="text-gray-700 dark:text-gray-300 text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
             Javite nam se putem društvenih mreža ili emaila
           </p>
+        </motion.div>
+
+        {/* Contact Form */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="bg-white dark:bg-gray-800 rounded-xl p-6 sm:p-8 mb-8 sm:mb-12 border border-pink-light dark:border-gray-700"
+        >
+          <h2 className="text-2xl sm:text-3xl font-semibold text-pink-dark dark:text-pink-medium mb-6">
+            Pošaljite nam poruku
+          </h2>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Name */}
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Ime i prezime *
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                value={formData.name}
+                onChange={handleInputChange}
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-pink-dark dark:focus:ring-pink-medium focus:border-transparent transition-colors"
+                placeholder="Vaše ime i prezime"
+              />
+            </div>
+
+            {/* Email */}
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Email *
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                value={formData.email}
+                onChange={handleInputChange}
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-pink-dark dark:focus:ring-pink-medium focus:border-transparent transition-colors"
+                placeholder="vas@email.com"
+              />
+            </div>
+
+            {/* Question Type Dropdown */}
+            <div>
+              <label htmlFor="questionType" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Tip upita *
+              </label>
+              <div className="relative">
+                <select
+                  id="questionType"
+                  name="questionType"
+                  required
+                  value={formData.questionType}
+                  onChange={handleInputChange}
+                  className="w-full pl-4 pr-10 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-pink-dark dark:focus:ring-pink-medium focus:border-transparent transition-colors appearance-none"
+                >
+                  <option value="">Odaberite tip upita</option>
+                  <option value="zahtjev-za-radom">Zahtjev za radom</option>
+                  <option value="info">Informacije</option>
+                  <option value="suradnja">Suradnja</option>
+                  <option value="upit-o-radovima">Upit o radovima</option>
+                  <option value="ostalo">Ostalo</option>
+                </select>
+                <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                  <svg
+                    className="w-5 h-5 text-gray-400 dark:text-gray-500"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            {/* Image Upload Section - Only for "Zahtjev za radom" */}
+            {isWorkRequest && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3 }}
+                className="border-2 border-dashed border-pink-medium dark:border-pink-dark rounded-lg p-6 bg-pink-light/20 dark:bg-gray-700/50"
+              >
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-4">
+                  Uploadajte slike (opcionalno)
+                </label>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-center w-full">
+                    <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 dark:border-gray-600 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                      <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                        <svg
+                          className="w-10 h-10 mb-3 text-gray-400 dark:text-gray-500"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                          />
+                        </svg>
+                        <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                          <span className="font-semibold">Kliknite za upload</span> ili povucite slike ovdje
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-400">
+                          PNG, JPG, GIF do 10MB
+                        </p>
+                      </div>
+                      <input
+                        type="file"
+                        className="hidden"
+                        multiple
+                        accept="image/*"
+                        onChange={handleImageUpload}
+                      />
+                    </label>
+                  </div>
+
+                  {/* Uploaded Images Preview */}
+                  {uploadedImages.length > 0 && (
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-4">
+                      {uploadedImages.map((image, index) => (
+                        <div key={index} className="relative group">
+                          <img
+                            src={URL.createObjectURL(image)}
+                            alt={`Preview ${index + 1}`}
+                            className="w-full h-24 object-cover rounded-lg border border-gray-300 dark:border-gray-600"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => removeImage(index)}
+                            className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+                            aria-label="Ukloni sliku"
+                          >
+                            <svg
+                              className="w-4 h-4"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M6 18L18 6M6 6l12 12"
+                              />
+                            </svg>
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </motion.div>
+            )}
+
+            {/* Message */}
+            <div>
+              <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Poruka *
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                rows={6}
+                value={formData.message}
+                onChange={handleInputChange}
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-pink-dark dark:focus:ring-pink-medium focus:border-transparent transition-colors resize-none"
+                placeholder="Vaša poruka..."
+              />
+            </div>
+
+            {/* Submit Button */}
+            <button
+              type="submit"
+              className="w-full sm:w-auto px-8 py-3 bg-pink-dark dark:bg-pink-medium text-white rounded-lg font-semibold hover:bg-pink-medium dark:hover:bg-pink-light transition-colors duration-200 shadow-lg hover:shadow-xl"
+            >
+              Pošalji poruku
+            </button>
+          </form>
         </motion.div>
 
         {/* Contact Information */}

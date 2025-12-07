@@ -1,0 +1,19 @@
+# Place your portfolio images here
+# 
+# Recommended folder structure:
+# public/
+#   images/
+#     pencil-drawings/
+#       portrait-study-1.jpg
+#       portrait-study-2.jpg
+#     charicatures/
+#       cityscape-charicature-1.jpg
+#       cityscape-charicature-2.jpg
+#     paintings/
+#       natures-palette-1.jpg
+#       natures-palette-2.jpg
+#
+# Then reference them in portfolioData.js like:
+# "/images/pencil-drawings/portrait-study-1.jpg"
+
+

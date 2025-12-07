@@ -1,10 +1,12 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTheme } from '../contexts/ThemeContext';
 
 const Navigation = () => {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isDark, toggleTheme } = useTheme();
 
   const isActive = (path) => location.pathname === path;
 
@@ -15,30 +17,30 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="bg-white shadow-sm sticky top-0 z-50">
+    <nav className="bg-white dark:bg-gray-900 shadow-sm sticky top-0 z-50 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20">
           {/* Logo */}
-          <Link to="/" className="text-xl md:text-2xl font-bold text-pink-dark hover:text-pink-medium transition-colors">
+          <Link to="/" className="text-xl md:text-2xl font-bold text-pink-dark dark:text-pink-medium hover:text-pink-medium dark:hover:text-pink-light transition-colors">
             Arkista
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 className={`relative px-3 py-2 text-sm md:text-base font-medium transition-colors ${
                   isActive(link.path)
-                    ? 'text-pink-dark'
-                    : 'text-gray-700 hover:text-pink-dark'
+                    ? 'text-pink-dark dark:text-pink-medium'
+                    : 'text-gray-700 dark:text-gray-300 hover:text-pink-dark dark:hover:text-pink-medium'
                 }`}
               >
                 {link.label}
                 {isActive(link.path) && (
                   <motion.div
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-pink-dark"
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-pink-dark dark:bg-pink-medium"
                     layoutId="underline"
                     initial={false}
                     transition={{ type: 'spring', stiffness: 500, damping: 30 }}
@@ -46,37 +48,71 @@ const Navigation = () => {
                 )}
               </Link>
             ))}
+            
+            {/* Theme Toggle Button */}
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-pink-dark dark:hover:text-pink-medium hover:bg-pink-light dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-pink-medium transition-colors"
+              aria-label={isDark ? 'Prebaci na svijetlu temu' : 'Prebaci na tamnu temu'}
+            >
+              {isDark ? (
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+              ) : (
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+              )}
+            </button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 rounded-md text-gray-700 hover:text-pink-dark hover:bg-pink-light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-pink-medium"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            <svg
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+          {/* Mobile Menu Button & Theme Toggle */}
+          <div className="md:hidden flex items-center space-x-2">
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-pink-dark dark:hover:text-pink-medium hover:bg-pink-light dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-pink-medium transition-colors"
+              aria-label={isDark ? 'Prebaci na svijetlu temu' : 'Prebaci na tamnu temu'}
             >
-              {isMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
+              {isDark ? (
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
               ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
               )}
-            </svg>
-          </button>
+            </button>
+            <button
+              className="p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-pink-dark dark:hover:text-pink-medium hover:bg-pink-light dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-pink-medium transition-colors"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              <svg
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                {isMenuOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -88,7 +124,7 @@ const Navigation = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden border-t border-pink-light"
+            className="md:hidden border-t border-pink-light dark:border-gray-700"
           >
             <div className="px-4 pt-2 pb-4 space-y-1">
               {navLinks.map((link) => (
@@ -98,8 +134,8 @@ const Navigation = () => {
                   onClick={() => setIsMenuOpen(false)}
                   className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
                     isActive(link.path)
-                      ? 'bg-pink-light text-pink-dark'
-                      : 'text-gray-700 hover:bg-pink-light hover:text-pink-dark'
+                      ? 'bg-pink-light dark:bg-gray-800 text-pink-dark dark:text-pink-medium'
+                      : 'text-gray-700 dark:text-gray-300 hover:bg-pink-light dark:hover:bg-gray-800 hover:text-pink-dark dark:hover:text-pink-medium'
                   }`}
                 >
                   {link.label}
@@ -114,4 +150,3 @@ const Navigation = () => {
 };
 
 export default Navigation;
-

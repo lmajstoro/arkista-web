@@ -16,6 +16,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #f8bbd0;
   color: #1a1a1a;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dark body {
+  background-color: #111827;
+  color: #f3f4f6;
 }
 
 html {

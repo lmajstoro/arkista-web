@@ -49,7 +49,7 @@ const ImageGallery = ({ images, title, video }) => {
     <div className="w-full">
       {/* Main Media Display */}
       <div className="relative w-full mb-4 sm:mb-6">
-        <div className="relative w-full aspect-video sm:aspect-[4/3] flex items-center justify-center overflow-hidden rounded-lg bg-gray-100">
+        <div className="relative w-full aspect-video sm:aspect-[4/3] flex items-center justify-center overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800 transition-colors duration-200">
           <AnimatePresence mode="wait">
             {isCurrentVideo ? (
               <motion.div
@@ -159,8 +159,8 @@ const ImageGallery = ({ images, title, video }) => {
                 onClick={() => goToMedia(index)}
               className={`relative aspect-square overflow-hidden rounded-md border-2 transition-all ${
                 currentIndex === index
-                  ? 'border-pink-dark ring-2 ring-pink-dark ring-offset-2'
-                  : 'border-transparent hover:border-pink-medium'
+                  ? 'border-pink-dark dark:border-pink-medium ring-2 ring-pink-dark dark:ring-pink-medium ring-offset-2 dark:ring-offset-gray-800'
+                  : 'border-transparent hover:border-pink-medium dark:hover:border-pink-light'
               }`}
               >
                 {thumbnail && (

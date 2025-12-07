@@ -5,7 +5,7 @@ const PortfolioGrid = ({ items }) => {
   if (items.length === 0) {
     return (
       <div className="text-center py-12">
-        <p className="text-gray-600 text-lg">Nema stavki u ovoj kategoriji.</p>
+        <p className="text-gray-600 dark:text-gray-400 text-lg">Nema stavki u ovoj kategoriji.</p>
       </div>
     );
   }
@@ -26,7 +26,7 @@ const PortfolioGrid = ({ items }) => {
               to={`/portfolio/${item.id}`}
               className="block group"
             >
-              <div className="relative overflow-hidden rounded-lg bg-white shadow-md hover:shadow-xl transition-shadow duration-300">
+              <div className="relative overflow-hidden rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition-shadow duration-300">
                 <div className="aspect-square overflow-hidden">
                   <motion.img
                     src={item.images[0]}
@@ -37,15 +37,15 @@ const PortfolioGrid = ({ items }) => {
                 </div>
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <button className="bg-white text-pink-dark px-6 py-2.5 sm:px-8 sm:py-3 rounded-full font-semibold text-sm sm:text-base hover:bg-pink-light transition-colors shadow-lg">
+                  <button className="bg-white dark:bg-gray-800 text-pink-dark dark:text-pink-medium px-6 py-2.5 sm:px-8 sm:py-3 rounded-full font-semibold text-sm sm:text-base hover:bg-pink-light dark:hover:bg-gray-700 transition-colors shadow-lg">
                     Pogledaj više
                   </button>
                 </div>
                 <div className="p-4">
-                  <h3 className="font-semibold text-pink-dark text-base sm:text-lg mb-1 group-hover:text-pink-medium transition-colors">
+                  <h3 className="font-semibold text-pink-dark dark:text-pink-medium text-base sm:text-lg mb-1 group-hover:text-pink-medium dark:group-hover:text-pink-light transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-gray-700 text-sm">{item.category}</p>
+                  <p className="text-gray-700 dark:text-gray-400 text-sm">{item.category}</p>
                 </div>
               </div>
             </Link>

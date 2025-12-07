@@ -36,7 +36,7 @@ const Portfolio = () => {
   }, [activeFilter, selectedTags]);
 
   return (
-    <div className="min-h-screen bg-white py-8 sm:py-12 md:py-16">
+    <div className="min-h-screen bg-white dark:bg-gray-900 py-8 sm:py-12 md:py-16 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Page Header */}
         <motion.div
@@ -45,10 +45,10 @@ const Portfolio = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-8 sm:mb-12 md:mb-16"
         >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-pink-dark mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-pink-dark dark:text-pink-medium mb-4">
             Portfolio
           </h1>
-          <p className="text-gray-700 text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
+          <p className="text-gray-700 dark:text-gray-300 text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
             Pregledajte kolekciju umjetničkih djela kroz različite medije i stilove
           </p>
         </motion.div>

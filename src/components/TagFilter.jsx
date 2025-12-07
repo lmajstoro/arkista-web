@@ -15,8 +15,8 @@ const TagFilter = ({ selectedTags, onTagToggle }) => {
               onClick={() => onTagToggle(tag)}
               className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs font-medium transition-all ${
                 isSelected
-                  ? 'bg-pink-dark text-white shadow-md'
-                  : 'bg-white text-gray-700 hover:bg-pink-light border border-gray-200 shadow-sm'
+                  ? 'bg-pink-dark dark:bg-pink-medium text-white shadow-md'
+                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-pink-light dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 shadow-sm'
               }`}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}

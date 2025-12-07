@@ -14,7 +14,7 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="min-h-screen bg-gray-50 flex flex-col">
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col transition-colors duration-200">
         <Navigation />
         <main className="flex-grow">
           <AnimatePresence mode="wait">
@@ -39,7 +39,7 @@ function App() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-pink-dark text-white px-4 py-3 rounded-full shadow-lg hover:shadow-xl transition-shadow text-sm font-semibold whitespace-nowrap"
+              className="bg-pink-dark dark:bg-pink-medium text-white px-4 py-3 rounded-full shadow-lg hover:shadow-xl transition-shadow text-sm font-semibold whitespace-nowrap"
               style={{ boxShadow: '0 4px 14px 0 rgba(226, 109, 92, 0.4)' }}
               aria-label="Kontaktiraj me"
             >

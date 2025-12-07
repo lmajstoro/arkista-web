@@ -11,8 +11,8 @@ const PortfolioFilter = ({ activeFilter, onFilterChange }) => {
             onClick={() => onFilterChange(category)}
             className={`px-4 py-2 sm:px-6 sm:py-3 rounded-full text-sm sm:text-base font-medium transition-all ${
               activeFilter === category
-                ? 'bg-pink-dark text-white shadow-lg'
-                : 'bg-white text-gray-700 hover:bg-pink-light shadow-sm'
+                ? 'bg-pink-dark dark:bg-pink-medium text-white shadow-lg'
+                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-pink-light dark:hover:bg-gray-700 shadow-sm border border-gray-200 dark:border-gray-700'
             }`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

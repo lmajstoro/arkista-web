@@ -69,7 +69,7 @@ const Home = () => {
                     portfolioSection.scrollIntoView({ behavior: 'smooth' });
                   }
                 }}
-                className="inline-block px-6 sm:px-8 py-3 sm:py-4 bg-pink-dark text-white text-sm sm:text-base font-semibold rounded-lg hover:bg-pink-medium transition-colors shadow-lg hover:shadow-xl transform hover:scale-105 transition-transform duration-200"
+                className="inline-block px-6 sm:px-8 py-3 sm:py-4 bg-pink-dark dark:bg-pink-medium text-white text-sm sm:text-base font-semibold rounded-lg hover:bg-pink-medium dark:hover:bg-pink-dark transition-colors shadow-lg hover:shadow-xl transform hover:scale-105 transition-transform duration-200"
               >
                 Pogledaj neke radove
               </button>
@@ -79,7 +79,7 @@ const Home = () => {
       </section>
 
       {/* Services Section */}
-      <section className="pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-10 md:pb-12 bg-white">
+      <section className="pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-10 md:pb-12 bg-white dark:bg-gray-900 transition-colors duration-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -88,10 +88,10 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12 sm:mb-16"
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-pink-dark mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-pink-dark dark:text-pink-medium mb-4">
               Naše Usluge
             </h2>
-            <p className="text-gray-700 text-base sm:text-lg max-w-2xl mx-auto">
+            <p className="text-gray-700 dark:text-gray-300 text-base sm:text-lg max-w-2xl mx-auto">
               Različite mogućnosti umjetničkog izražavanja prilagođene vašim potrebama
             </p>
           </motion.div>
@@ -103,11 +103,11 @@ const Home = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="bg-white rounded-xl p-6 sm:p-8 border border-pink-light hover:shadow-lg transition-shadow duration-300"
+              className="bg-white dark:bg-gray-800 rounded-xl p-6 sm:p-8 border border-pink-light dark:border-gray-700 hover:shadow-lg transition-shadow duration-300"
             >
               <div className="mb-4">
                 <svg
-                  className="w-12 h-12 text-pink-dark"
+                  className="w-12 h-12 text-pink-dark dark:text-pink-medium"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -120,10 +120,10 @@ const Home = () => {
                   />
                 </svg>
               </div>
-              <h3 className="text-xl sm:text-2xl font-semibold text-pink-dark mb-3">
+              <h3 className="text-xl sm:text-2xl font-semibold text-pink-dark dark:text-pink-medium mb-3">
                 Realistični portreti
               </h3>
-              <p className="text-gray-600 text-sm sm:text-base">
+              <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
                 Izrada realističnih portreta grafitnom olovkom ili bojicama, s pažljivim fokusom na detalje i karakteristike lica.
               </p>
             </motion.div>
@@ -134,11 +134,11 @@ const Home = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-white rounded-xl p-6 sm:p-8 border border-pink-light hover:shadow-lg transition-shadow duration-300"
+              className="bg-white dark:bg-gray-800 rounded-xl p-6 sm:p-8 border border-pink-light dark:border-gray-700 hover:shadow-lg transition-shadow duration-300"
             >
               <div className="mb-4">
                 <svg
-                  className="w-12 h-12 text-pink-dark"
+                  className="w-12 h-12 text-pink-dark dark:text-pink-medium"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -151,10 +151,10 @@ const Home = () => {
                   />
                 </svg>
               </div>
-              <h3 className="text-xl sm:text-2xl font-semibold text-pink-dark mb-3">
+              <h3 className="text-xl sm:text-2xl font-semibold text-pink-dark dark:text-pink-medium mb-3">
                 Karikature
               </h3>
-              <p className="text-gray-600 text-sm sm:text-base">
+              <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
                 Stvaranje jedinstvenih karikatura koje naglašavaju karakteristike i osobnost subjekta na zabavan i kreativan način.
               </p>
             </motion.div>
@@ -165,11 +165,11 @@ const Home = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="bg-white rounded-xl p-6 sm:p-8 border border-pink-light hover:shadow-lg transition-shadow duration-300"
+              className="bg-white dark:bg-gray-800 rounded-xl p-6 sm:p-8 border border-pink-light dark:border-gray-700 hover:shadow-lg transition-shadow duration-300"
             >
               <div className="mb-4">
                 <svg
-                  className="w-12 h-12 text-pink-dark"
+                  className="w-12 h-12 text-pink-dark dark:text-pink-medium"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -182,10 +182,10 @@ const Home = () => {
                   />
                 </svg>
               </div>
-              <h3 className="text-xl sm:text-2xl font-semibold text-pink-dark mb-3">
+              <h3 className="text-xl sm:text-2xl font-semibold text-pink-dark dark:text-pink-medium mb-3">
                 Slike različitim tehnikama
               </h3>
-              <p className="text-gray-600 text-sm sm:text-base">
+              <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
                 Izrada slika različitim tehnikama poput ulja, akrila i akvarela, prilagođeno vašim željama i stilu.
               </p>
             </motion.div>
@@ -196,11 +196,11 @@ const Home = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="bg-white rounded-xl p-6 sm:p-8 border border-pink-light hover:shadow-lg transition-shadow duration-300"
+              className="bg-white dark:bg-gray-800 rounded-xl p-6 sm:p-8 border border-pink-light dark:border-gray-700 hover:shadow-lg transition-shadow duration-300"
             >
               <div className="mb-4">
                 <svg
-                  className="w-12 h-12 text-pink-dark"
+                  className="w-12 h-12 text-pink-dark dark:text-pink-medium"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -213,10 +213,10 @@ const Home = () => {
                   />
                 </svg>
               </div>
-              <h3 className="text-xl sm:text-2xl font-semibold text-pink-dark mb-3">
+              <h3 className="text-xl sm:text-2xl font-semibold text-pink-dark dark:text-pink-medium mb-3">
                 Spajanje više slika
               </h3>
-              <p className="text-gray-600 text-sm sm:text-base">
+              <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
                 Kreativno spajanje više slika u jednu kompoziciju, stvarajući jedinstveno i personalizirano umjetničko djelo.
               </p>
             </motion.div>
@@ -256,7 +256,7 @@ const Home = () => {
             <div className="flex-shrink-0">
               <Link
                 to="/contact"
-                className="inline-block px-6 sm:px-8 py-3 sm:py-4 bg-pink-dark text-white text-sm sm:text-base font-semibold rounded-lg hover:bg-pink-medium transition-colors shadow-lg hover:shadow-xl transform hover:scale-105 transition-transform duration-200"
+                className="inline-block px-6 sm:px-8 py-3 sm:py-4 bg-pink-dark dark:bg-pink-medium text-white text-sm sm:text-base font-semibold rounded-lg hover:bg-pink-medium dark:hover:bg-pink-dark transition-colors shadow-lg hover:shadow-xl transform hover:scale-105 transition-transform duration-200"
               >
                 Kontaktiraj nas
               </Link>
@@ -266,7 +266,7 @@ const Home = () => {
       </section>
 
       {/* Portfolio Preview Section */}
-      <section id="portfolio" className="pt-8 sm:pt-10 md:pt-12 pb-16 sm:pb-20 md:pb-24 bg-white">
+      <section id="portfolio" className="pt-8 sm:pt-10 md:pt-12 pb-16 sm:pb-20 md:pb-24 bg-white dark:bg-gray-900 transition-colors duration-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -275,10 +275,10 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12 sm:mb-16"
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-pink-dark mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-pink-dark dark:text-pink-medium mb-4">
               Portfolio
             </h2>
-            <p className="text-gray-700 text-base sm:text-lg max-w-2xl mx-auto">
+            <p className="text-gray-700 dark:text-gray-300 text-base sm:text-lg max-w-2xl mx-auto">
               Pregledajte odabrana umjetnička djela
             </p>
           </motion.div>

@@ -53,7 +53,7 @@ const Home = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-base sm:text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-8 sm:mb-12 px-4 drop-shadow-md"
+              className="text-base sm:text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-8 sm:mb-12 px-4 drop-shadow-md font-poppins"
             >
               Istražite kolekciju crteža olovkom koje prikazuju kreativnost i umjetničku ekspresiju.
             </motion.p>
@@ -91,7 +91,7 @@ const Home = () => {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-pink-dark dark:text-pink-medium mb-4">
               Naše Usluge
             </h2>
-            <p className="text-gray-700 dark:text-gray-300 text-base sm:text-lg max-w-2xl mx-auto">
+            <p className="text-gray-700 dark:text-gray-300 text-base sm:text-lg max-w-2xl mx-auto font-poppins">
               Različite mogućnosti umjetničkog izražavanja prilagođene vašim potrebama
             </p>
           </motion.div>
@@ -123,7 +123,7 @@ const Home = () => {
               <h3 className="text-xl sm:text-2xl font-semibold text-pink-dark dark:text-pink-medium mb-3">
                 Realistični portreti
               </h3>
-              <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
+              <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base font-poppins">
                 Izrada realističnih portreta grafitnom olovkom ili bojicama, s pažljivim fokusom na detalje i karakteristike lica.
               </p>
             </motion.div>
@@ -154,12 +154,12 @@ const Home = () => {
               <h3 className="text-xl sm:text-2xl font-semibold text-pink-dark dark:text-pink-medium mb-3">
                 Karikature
               </h3>
-              <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
+              <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base font-poppins">
                 Stvaranje jedinstvenih karikatura koje naglašavaju karakteristike i osobnost subjekta na zabavan i kreativan način.
               </p>
             </motion.div>
 
-            {/* Slike različitim tehnikama */}
+            {/* Slike */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -178,14 +178,14 @@ const Home = () => {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
+                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
                   />
                 </svg>
               </div>
               <h3 className="text-xl sm:text-2xl font-semibold text-pink-dark dark:text-pink-medium mb-3">
-                Slike različitim tehnikama
+                Slike
               </h3>
-              <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
+              <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base font-poppins">
                 Izrada slika različitim tehnikama poput ulja, akrila i akvarela, prilagođeno vašim željama i stilu.
               </p>
             </motion.div>
@@ -205,18 +205,47 @@ const Home = () => {
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
+                  {/* Multiple overlapping frames representing combining images */}
+                  <rect
+                    x="2"
+                    y="4"
+                    width="8"
+                    height="8"
+                    rx="1"
+                    strokeWidth="2"
+                    opacity="0.8"
+                  />
+                  <rect
+                    x="6"
+                    y="8"
+                    width="8"
+                    height="8"
+                    rx="1"
+                    strokeWidth="2"
+                    opacity="0.8"
+                  />
+                  <rect
+                    x="10"
+                    y="12"
+                    width="8"
+                    height="8"
+                    rx="1"
+                    strokeWidth="2"
+                    opacity="0.8"
+                  />
+                  {/* Plus sign in the center to indicate combining */}
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    strokeWidth="2.5"
+                    d="M12 10v4m-2-2h4"
                   />
                 </svg>
               </div>
               <h3 className="text-xl sm:text-2xl font-semibold text-pink-dark dark:text-pink-medium mb-3">
                 Spajanje više slika
               </h3>
-              <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
+              <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base font-poppins">
                 Kreativno spajanje više slika u jednu kompoziciju, stvarajući jedinstveno i personalizirano umjetničko djelo.
               </p>
             </motion.div>
@@ -249,7 +278,7 @@ const Home = () => {
               <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-white mb-2 drop-shadow-lg">
                 I druge vaše ideje...
               </h3>
-              <p className="text-white/90 text-sm sm:text-base md:text-lg drop-shadow-md">
+              <p className="text-white/90 text-sm sm:text-base md:text-lg drop-shadow-md font-poppins">
                 Imate ideju koja nije navedena? Kontaktirajte nas da se dogovorimo!
               </p>
             </div>
@@ -278,7 +307,7 @@ const Home = () => {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-pink-dark dark:text-pink-medium mb-4">
               Portfolio
             </h2>
-            <p className="text-gray-700 dark:text-gray-300 text-base sm:text-lg max-w-2xl mx-auto">
+            <p className="text-gray-700 dark:text-gray-300 text-base sm:text-lg max-w-2xl mx-auto font-poppins">
               Pregledajte odabrana umjetnička djela
             </p>
           </motion.div>
@@ -316,11 +345,11 @@ const Home = () => {
                         Pogledaj više
                       </motion.button>
                       <div className="text-center px-4">
-                        <p className="text-white/90 text-xs sm:text-sm font-medium mb-1">
+                        <p className="text-white/90 text-xs sm:text-sm font-medium mb-1 font-poppins">
                           {item.category}
                         </p>
                         {item.technique && (
-                          <p className="text-white/70 text-xs">
+                          <p className="text-white/70 text-xs font-poppins">
                             {item.technique}
                           </p>
                         )}

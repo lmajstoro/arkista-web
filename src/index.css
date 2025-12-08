@@ -9,9 +9,10 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Sour Gummy', cursive, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+  font-weight: 300;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #f8bbd0;
@@ -26,5 +27,18 @@ body {
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Apply Poppins to sub-texts, descriptions, and secondary text elements */
+p:not(h1 p):not(h2 p):not(h3 p),
+.text-gray-600,
+.text-gray-700,
+.text-gray-300,
+.text-gray-400,
+.text-gray-500,
+.prose p,
+.prose span,
+span[class*="text-gray-"] {
+  font-family: 'Poppins', sans-serif;
 }
 

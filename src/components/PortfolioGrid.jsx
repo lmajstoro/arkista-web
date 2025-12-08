@@ -5,7 +5,7 @@ const PortfolioGrid = ({ items }) => {
   if (items.length === 0) {
     return (
       <div className="text-center py-12">
-        <p className="text-gray-600 dark:text-gray-400 text-lg">Nema stavki u ovoj kategoriji.</p>
+        <p className="text-gray-600 dark:text-gray-400 text-lg font-poppins">Nema stavki u ovoj kategoriji.</p>
       </div>
     );
   }
@@ -45,7 +45,7 @@ const PortfolioGrid = ({ items }) => {
                   <h3 className="font-semibold text-pink-dark dark:text-pink-medium text-base sm:text-lg mb-1 group-hover:text-pink-medium dark:group-hover:text-pink-light transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-gray-700 dark:text-gray-400 text-sm">{item.category}</p>
+                  <p className="text-gray-700 dark:text-gray-400 text-sm font-poppins">{item.category}</p>
                 </div>
               </div>
             </Link>

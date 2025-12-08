@@ -29,7 +29,7 @@ function FloatingContactButton() {
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="bg-pink-dark dark:bg-pink-medium text-white px-4 py-3 rounded-full shadow-lg hover:shadow-xl transition-shadow text-sm font-semibold whitespace-nowrap"
+          className="bg-pink-dark dark:bg-pink-medium text-white px-4 py-3 rounded-full shadow-lg hover:shadow-xl transition-shadow text-sm font-semibold whitespace-nowrap font-poppins"
           style={{ boxShadow: '0 4px 14px 0 rgba(226, 109, 92, 0.4)' }}
           aria-label="Kontaktiraj me"
         >

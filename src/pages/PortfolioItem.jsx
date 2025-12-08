@@ -83,7 +83,7 @@ const PortfolioItem = () => {
             {/* Description */}
             {item.description && (
               <div className="prose prose-sm sm:prose-base max-w-none mb-6 sm:mb-8">
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-sm sm:text-base md:text-lg">
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-sm sm:text-base md:text-lg font-poppins">
                   {item.description}
                 </p>
               </div>
@@ -101,14 +101,14 @@ const PortfolioItem = () => {
                   <div className="flex-1 space-y-2 sm:space-y-3">
                     {item.size && (
                       <div>
-                        <span className="text-gray-500 dark:text-gray-400 text-sm sm:text-base">Veličina: </span>
-                        <span className="text-gray-700 dark:text-gray-300 text-sm sm:text-base">{item.size}</span>
+                        <span className="text-gray-500 dark:text-gray-400 text-sm sm:text-base font-poppins">Veličina: </span>
+                        <span className="text-gray-700 dark:text-gray-300 text-sm sm:text-base font-poppins">{item.size}</span>
                       </div>
                     )}
                     {item.technique && (
                       <div>
-                        <span className="text-gray-500 dark:text-gray-400 text-sm sm:text-base">Tehnika: </span>
-                        <span className="text-gray-700 dark:text-gray-300 text-sm sm:text-base">{item.technique}</span>
+                        <span className="text-gray-500 dark:text-gray-400 text-sm sm:text-base font-poppins">Tehnika: </span>
+                        <span className="text-gray-700 dark:text-gray-300 text-sm sm:text-base font-poppins">{item.technique}</span>
                       </div>
                     )}
                   </div>

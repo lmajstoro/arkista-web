@@ -11,7 +11,7 @@ const Navigation = () => {
   const isActive = (path) => location.pathname === path;
 
   const navLinks = [
-    { path: '/', label: 'Početna' },
+    { path: '/', label: 'Naslovnica' },
     { path: '/portfolio', label: 'Portfolio' },
     { path: '/contact', label: 'Kontakt' },
   ];
@@ -31,7 +31,7 @@ const Navigation = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`relative px-3 py-2 text-sm md:text-base font-medium transition-colors ${
+                className={`relative px-3 py-2 text-sm md:text-base font-medium transition-colors font-poppins ${
                   isActive(link.path)
                     ? 'text-pink-dark dark:text-pink-medium'
                     : 'text-gray-700 dark:text-gray-300 hover:text-pink-dark dark:hover:text-pink-medium'
@@ -147,7 +147,7 @@ const Navigation = () => {
                     setIsMenuOpen(false);
                     window.scrollTo(0, 0);
                   }}
-                  className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                  className={`block px-3 py-2 rounded-md text-base font-medium transition-colors font-poppins ${
                     isActive(link.path)
                       ? 'bg-pink-light/50 dark:bg-gray-800 text-pink-dark dark:text-pink-medium'
                       : 'text-gray-700 dark:text-gray-300 hover:bg-pink-light/50 dark:hover:bg-gray-800 hover:text-pink-dark dark:hover:text-pink-medium'

@@ -48,7 +48,7 @@ const Contact = () => {
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-pink-dark dark:text-pink-medium mb-4">
             Kontakt
           </h1>
-          <p className="text-gray-700 dark:text-gray-300 text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
+          <p className="text-gray-700 dark:text-gray-300 text-base sm:text-lg md:text-xl max-w-2xl mx-auto font-poppins">
             Javite nam se putem društvenih mreža ili emaila
           </p>
         </motion.div>
@@ -74,7 +74,7 @@ const Contact = () => {
                 Instagram
               </h2>
             </div>
-            <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base mb-4">
+            <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base mb-4 font-poppins">
               Pratite nas na Instagramu za najnovije umjetničke radove i ažuriranja.
             </p>
             <a
@@ -125,7 +125,7 @@ const Contact = () => {
                 Email
               </h2>
             </div>
-            <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base mb-4">
+            <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base mb-4 font-poppins">
               Pošaljite nam poruku za upite o umjetničkim djelima ili suradnji.
             </p>
             <a
@@ -168,7 +168,7 @@ const Contact = () => {
                 WhatsApp
               </h2>
             </div>
-            <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base mb-4">
+            <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base mb-4 font-poppins">
               Kontaktirajte nas direktno putem WhatsAppa za brze odgovore.
             </p>
             <a
@@ -206,7 +206,7 @@ const Contact = () => {
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-pink-dark dark:text-pink-medium mb-4">
               Često postavljana pitanja
             </h2>
-            <p className="text-gray-700 dark:text-gray-300 text-base sm:text-lg max-w-2xl mx-auto">
+            <p className="text-gray-700 dark:text-gray-300 text-base sm:text-lg max-w-2xl mx-auto font-poppins">
               Pronađite odgovore na najčešća pitanja o našim uslugama
             </p>
           </div>
@@ -267,7 +267,7 @@ const Contact = () => {
                       style={{ border: 'none', borderColor: 'transparent' }}
                     >
                       <div className="px-6 sm:px-8 pb-4 sm:pb-5 pt-0 sm:pt-0">
-                        <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base leading-relaxed">
+                        <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base leading-relaxed font-poppins">
                           {faq.answer}
                         </p>
                       </div>

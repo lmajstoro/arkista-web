@@ -13,7 +13,7 @@ const TagFilter = ({ selectedTags, onTagToggle }) => {
             <motion.button
               key={tag}
               onClick={() => onTagToggle(tag)}
-              className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs font-medium transition-all ${
+              className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs font-medium transition-all font-poppins ${
                 isSelected
                   ? 'bg-pink-dark dark:bg-pink-medium text-white shadow-md'
                   : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-pink-light dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 shadow-sm'

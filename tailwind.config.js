@@ -21,6 +21,10 @@ export default {
         'peach': '#ffb74d',
         'peach-light': '#ffe0b2',
       },
+      fontFamily: {
+        'sans': ['Sour Gummy', 'cursive', 'system-ui', '-apple-system', 'sans-serif'],
+        'poppins': ['Poppins', 'sans-serif'],
+      },
     },
   },
   plugins: [],

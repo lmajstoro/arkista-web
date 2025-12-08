@@ -48,7 +48,7 @@ const Portfolio = () => {
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-pink-dark dark:text-pink-medium mb-4">
             Portfolio
           </h1>
-          <p className="text-gray-700 dark:text-gray-300 text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
+          <p className="text-gray-700 dark:text-gray-300 text-base sm:text-lg md:text-xl max-w-2xl mx-auto font-poppins">
             Pregledajte kolekciju umjetničkih djela kroz različite medije i stilove
           </p>
         </motion.div>

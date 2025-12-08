@@ -51,8 +51,12 @@ const Navigation = () => {
             
             {/* Theme Toggle Button */}
             <button
-              onClick={toggleTheme}
-              className="p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-pink-dark dark:hover:text-pink-medium hover:bg-pink-light dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-pink-medium transition-colors"
+              onClick={(e) => {
+                toggleTheme();
+                e.currentTarget.blur();
+              }}
+              onMouseDown={(e) => e.preventDefault()}
+              className="p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-pink-dark dark:hover:text-pink-medium hover:bg-pink-light dark:hover:bg-gray-800 focus:outline-none transition-colors"
               aria-label={isDark ? 'Prebaci na svijetlu temu' : 'Prebaci na tamnu temu'}
             >
               {isDark ? (
@@ -70,8 +74,12 @@ const Navigation = () => {
           {/* Mobile Menu Button & Theme Toggle */}
           <div className="md:hidden flex items-center space-x-2">
             <button
-              onClick={toggleTheme}
-              className="p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-pink-dark dark:hover:text-pink-medium hover:bg-pink-light dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-pink-medium transition-colors"
+              onClick={(e) => {
+                toggleTheme();
+                e.currentTarget.blur();
+              }}
+              onMouseDown={(e) => e.preventDefault()}
+              className="p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-pink-dark dark:hover:text-pink-medium hover:bg-pink-light dark:hover:bg-gray-800 focus:outline-none transition-colors"
               aria-label={isDark ? 'Prebaci na svijetlu temu' : 'Prebaci na tamnu temu'}
             >
               {isDark ? (
@@ -85,8 +93,12 @@ const Navigation = () => {
               )}
             </button>
             <button
-              className="p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-pink-dark dark:hover:text-pink-medium hover:bg-pink-light dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-pink-medium transition-colors"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-pink-dark dark:hover:text-pink-medium hover:bg-pink-light dark:hover:bg-gray-800 focus:outline-none transition-colors"
+              onClick={(e) => {
+                setIsMenuOpen(!isMenuOpen);
+                e.currentTarget.blur();
+              }}
+              onMouseDown={(e) => e.preventDefault()}
               aria-label="Toggle menu"
             >
               <svg
@@ -131,11 +143,14 @@ const Navigation = () => {
                 <Link
                   key={link.path}
                   to={link.path}
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    window.scrollTo(0, 0);
+                  }}
                   className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
                     isActive(link.path)
-                      ? 'bg-pink-light dark:bg-gray-800 text-pink-dark dark:text-pink-medium'
-                      : 'text-gray-700 dark:text-gray-300 hover:bg-pink-light dark:hover:bg-gray-800 hover:text-pink-dark dark:hover:text-pink-medium'
+                      ? 'bg-pink-light/50 dark:bg-gray-800 text-pink-dark dark:text-pink-medium'
+                      : 'text-gray-700 dark:text-gray-300 hover:bg-pink-light/50 dark:hover:bg-gray-800 hover:text-pink-dark dark:hover:text-pink-medium'
                   }`}
                 >
                   {link.label}

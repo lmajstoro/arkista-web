@@ -1,6 +1,40 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
 
 const Contact = () => {
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const faqData = [
+    {
+      question: "Koliko vremena treba za izradu portreta?",
+      answer: "Vrijeme izrade portreta ovisi o složenosti i tehnici. Realistični portret grafitnom olovkom obično traje 1-2 tjedna, dok slike različitim tehnikama mogu trajati 2-4 tjedna. Za precizniju procjenu, molimo kontaktirajte nas s detaljima vašeg projekta."
+    },
+    {
+      question: "Koje su cijene za umjetnička djela?",
+      answer: "Cijene variraju ovisno o veličini, tehnici i složenosti djela. Osnovni portret grafitnom olovkom kreće se od određene cijene, dok slike različitim tehnikama imaju drugačije cjenovnike. Za detaljnu ponudu, molimo kontaktirajte nas s vašim zahtjevima."
+    },
+    {
+      question: "Mogu li poslati referentne fotografije?",
+      answer: "Da, preporučujemo slanje referentnih fotografija kako bismo mogli najbolje razumjeti vašu viziju. Možete ih poslati putem kontakt forme ili direktno na email. Što više detalja pružite, to će konačno djelo biti bliže vašim očekivanjima."
+    },
+    {
+      question: "Radite li i na narudžbi?",
+      answer: "Da, radimo na narudžbi i prilagođavamo se vašim potrebama. Možete naručiti portrete, karikature, slike različitim tehnikama ili kombinacije više slika. Kontaktirajte nas da razgovorimo o vašoj ideji i kako je možemo realizirati."
+    },
+    {
+      question: "Kako funkcionira proces narudžbe?",
+      answer: "Proces započinje kontaktom putem emaila, WhatsAppa ili kontakt forme. Razgovaramo o vašim željama, veličini, tehnici i rokovima. Nakon dogovora, možemo započeti s radom. Tijekom procesa možete pratiti napredak i dati povratne informacije."
+    },
+    {
+      question: "Što ako nisam zadovoljan/na rezultatom?",
+      answer: "Naš cilj je da budete potpuno zadovoljni s konačnim rezultatom. Tijekom procesa rada možete dati povratne informacije i zahtijevati izmjene. Radimo sve dok ne postignemo rezultat koji odgovara vašim očekivanjima."
+    }
+  ];
+
+  const toggleFAQ = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 py-8 sm:py-12 md:py-16 transition-colors duration-200">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -160,10 +194,93 @@ const Contact = () => {
             </a>
           </motion.div>
         </div>
+
+        {/* FAQ Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="mt-16 sm:mt-20 md:mt-24"
+        >
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-pink-dark dark:text-pink-medium mb-4">
+              Često postavljana pitanja
+            </h2>
+            <p className="text-gray-700 dark:text-gray-300 text-base sm:text-lg max-w-2xl mx-auto">
+              Pronađite odgovore na najčešća pitanja o našim uslugama
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {faqData.map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.1 * index }}
+                className="bg-white dark:bg-gray-800 rounded-xl border border-pink-light dark:border-gray-700 overflow-hidden transition-shadow duration-300 hover:shadow-lg"
+              >
+                <button
+                  onClick={(e) => {
+                    toggleFAQ(index);
+                    e.currentTarget.blur();
+                  }}
+                  onMouseDown={(e) => e.preventDefault()}
+                  className="w-full px-6 sm:px-8 py-4 sm:py-5 flex items-center justify-between text-left focus:outline-none transition-colors border-0"
+                  style={{ borderColor: 'transparent' }}
+                  aria-expanded={openIndex === index}
+                  aria-controls={`faq-answer-${index}`}
+                >
+                  <h3 className="text-base sm:text-lg md:text-xl font-semibold text-pink-dark dark:text-pink-medium pr-4">
+                    {faq.question}
+                  </h3>
+                  <motion.div
+                    animate={{ rotate: openIndex === index ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="flex-shrink-0"
+                  >
+                    <svg
+                      className="w-5 h-5 sm:w-6 sm:h-6 text-pink-dark dark:text-pink-medium"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </motion.div>
+                </button>
+                
+                <AnimatePresence>
+                  {openIndex === index && (
+                    <motion.div
+                      id={`faq-answer-${index}`}
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: 'easeInOut' }}
+                      className="overflow-hidden"
+                      style={{ border: 'none', borderColor: 'transparent' }}
+                    >
+                      <div className="px-6 sm:px-8 pb-4 sm:pb-5 pt-0 sm:pt-0">
+                        <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base leading-relaxed">
+                          {faq.answer}
+                        </p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </div>
   );
 };
 
 export default Contact;
-

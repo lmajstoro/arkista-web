@@ -5,6 +5,7 @@ import { portfolioData } from '../data/portfolioData';
 
 const Home = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -16,6 +17,44 @@ const Home = () => {
     
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  const testimonials = [
+    {
+      id: 1,
+      text: "Izvanredan rad! Portret je bio savršen i točno ono što sam želio. Profesionalan pristup i brza komunikacija. Preporučujem!",
+      name: "Marija K.",
+      service: "Realistični portret",
+      initial: "M"
+    },
+    {
+      id: 2,
+      text: "Karikatura je bila savršena za poklon! Umjetnica je uspjela uhvatiti sve karakteristike i osobnost. Odličan rad!",
+      name: "Ivan P.",
+      service: "Karikatura",
+      initial: "I"
+    },
+    {
+      id: 3,
+      text: "Kreativno spajanje više slika u jednu kompoziciju bilo je izvanredno! Rezultat je premašio moja očekivanja. Hvala!",
+      name: "Ana M.",
+      service: "Spajanje slika",
+      initial: "A"
+    }
+  ];
+
+  const totalSlides = testimonials.length;
+
+  const nextTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev + 1) % totalSlides);
+  };
+
+  const prevTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev - 1 + totalSlides) % totalSlides);
+  };
+
+  const goToSlide = (index) => {
+    setCurrentTestimonial(index);
+  };
 
   // Duplicate portfolio items for testing
   const duplicatedPortfolioData = [...portfolioData, ...portfolioData];
@@ -295,7 +334,7 @@ const Home = () => {
       </section>
 
       {/* Portfolio Preview Section */}
-      <section id="portfolio" className="pt-8 sm:pt-10 md:pt-12 pb-16 sm:pb-20 md:pb-24 bg-white dark:bg-gray-900 transition-colors duration-200">
+      <section id="portfolio" className="pt-8 sm:pt-10 md:pt-12 pb-8 sm:pb-10 md:pb-12 bg-white dark:bg-gray-900 transition-colors duration-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -382,6 +421,131 @@ const Home = () => {
               Pogledaj Cijeli Portfolio
             </Link>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="pt-8 sm:pt-10 md:pt-12 pb-16 sm:pb-20 md:pb-24 bg-white dark:bg-gray-900 transition-colors duration-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12 sm:mb-16"
+          >
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-pink-dark dark:text-pink-medium mb-4">
+              Što Kažu Naši Klijenti
+            </h2>
+            <p className="text-gray-700 dark:text-gray-300 text-base sm:text-lg max-w-2xl mx-auto font-poppins">
+              Iskustva ljudi koji su radovali s nama
+            </p>
+          </motion.div>
+
+          {/* Carousel Container */}
+          <div className="relative">
+            {/* Carousel Wrapper */}
+            <div className="overflow-hidden">
+              <motion.div
+                className="flex"
+                animate={{
+                  x: `-${currentTestimonial * 100}%`
+                }}
+                transition={{ duration: 0.25, ease: "easeInOut" }}
+              >
+                {testimonials.map((testimonial) => (
+                  <div
+                    key={testimonial.id}
+                    className="flex-shrink-0 px-3 flex justify-center"
+                    style={{ width: '100%' }}
+                  >
+                    <div className="bg-white dark:bg-gray-800 rounded-xl p-6 sm:p-8 border border-pink-light dark:border-gray-700 hover:shadow-lg transition-shadow duration-300 h-full max-w-2xl w-full">
+                      <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base mb-6 font-poppins italic">
+                        "{testimonial.text}"
+                      </p>
+                      <div className="flex items-center">
+                        <div className="w-12 h-12 rounded-full bg-pink-light dark:bg-pink-dark/30 flex items-center justify-center mr-4">
+                          <span className="text-pink-dark dark:text-pink-medium font-semibold text-lg">
+                            {testimonial.initial}
+                          </span>
+                        </div>
+                        <div>
+                          <p className="font-semibold text-pink-dark dark:text-pink-medium">
+                            {testimonial.name}
+                          </p>
+                          <p className="text-sm text-gray-500 dark:text-gray-500 font-poppins">
+                            {testimonial.service}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* Navigation Arrows */}
+            {totalSlides > 1 && (
+              <>
+                <button
+                  onClick={prevTestimonial}
+                  className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 sm:-translate-x-8 bg-white dark:bg-gray-800 border border-pink-light dark:border-gray-700 rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-200 hover:bg-pink-light dark:hover:bg-gray-700 z-10"
+                  aria-label="Prethodni"
+                >
+                  <svg
+                    className="w-5 h-5 sm:w-6 sm:h-6 text-pink-dark dark:text-pink-medium"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 19l-7-7 7-7"
+                    />
+                  </svg>
+                </button>
+                <button
+                  onClick={nextTestimonial}
+                  className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-8 bg-white dark:bg-gray-800 border border-pink-light dark:border-gray-700 rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-200 hover:bg-pink-light dark:hover:bg-gray-700 z-10"
+                  aria-label="Sljedeći"
+                >
+                  <svg
+                    className="w-5 h-5 sm:w-6 sm:h-6 text-pink-dark dark:text-pink-medium"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </button>
+              </>
+            )}
+
+            {/* Dots Indicator */}
+            {totalSlides > 1 && (
+              <div className="flex justify-center mt-8 gap-2">
+                {Array.from({ length: totalSlides }).map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => goToSlide(index)}
+                    className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
+                      currentTestimonial === index
+                        ? "bg-pink-dark dark:bg-pink-medium w-6 sm:w-8"
+                        : "bg-pink-light dark:bg-gray-600"
+                    }`}
+                    aria-label={`Idi na slajd ${index + 1}`}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </section>
     </div>
